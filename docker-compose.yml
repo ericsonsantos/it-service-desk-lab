@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: itsd-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - itsd-nginx-data:/usr/share/nginx/html
+    networks:
+      - itsd-network
+
+volumes:
+  itsd-nginx-data:
+    external: true
+
+networks:
+  itsd-network:
+    external: true
