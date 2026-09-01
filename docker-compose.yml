@@ -9,9 +9,23 @@ services:
     networks:
       - itsd-network
 
+  postgres:
+    image: postgres:16
+    container_name: itsd-postgres
+    environment:
+      POSTGRES_USER: itsd
+      POSTGRES_PASSWORD: itsd123
+      POSTGRES_DB: itsd_db
+    volumes:
+      - itsd-postgres-data:/var/lib/postgresql/data
+    networks:
+      - itsd-network
+
 volumes:
   itsd-nginx-data:
     external: true
+
+  itsd-postgres-data:
 
 networks:
   itsd-network:
